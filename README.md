@@ -1,0 +1,1 @@
+Gives users command line to enter new entries (including task name, time spent, additional notes) that will be placed in a CSV file. Also gives users option at command line to search prior entries by task name/notes, time spent, date or regular expression.

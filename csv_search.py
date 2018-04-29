@@ -4,9 +4,10 @@ import csv, datetime, re, sys, os
 
 
 def space():
-	'''provides space between menu options'''
+	"""provides space between menu options"""
 
 	print('_' * 75 + '\n' *4)
+
 
 def clear():
 	"""clears terminal screen"""
@@ -32,6 +33,7 @@ def time_input():
 		except ValueError:
 			print("""Sorry, {} is not a valid entry, please indicate time spent on task
 with digits only. (ex. correct response -> 45 | incorrect response ->forty-five)\n\n\n""".format(time))
+
 
 def search_menu():
 	"""Menu options for searching prior entries, user can select between
@@ -66,9 +68,10 @@ def search_menu():
 
 
 class NewEntry():
-	'''Creates new entry with entries task name, time spent on entry and
+	"""Creates new entry with entries task name, time spent on entry and
 	   additional notes about entry
-	 '''
+	 """
+	
 	def __init__(self, task, time, notes):
 		self.task = task
 		self.time = time
@@ -76,13 +79,14 @@ class NewEntry():
 
 
 class SearchEntry():
-	'''Searches csv file by date, pattern, time spent(minutes), exact string'''
+	"""Searches csv file by date, regular expression pattern, time spent(minutes), exact string"""
 
 	def __init__(self, search_choice):
-		'''creates entry instance'''
+		"""creates entry instance"""
 		self.search_choice = search_choice
 
 	def pulling_entry_date(self):
+		"""allows user to retrieve specific entry from csv file based on date user inputs at command line"""
 
 		with open('time_sheets.csv') as file_object:
 			csvreader = csv.reader(file_object)
@@ -112,8 +116,8 @@ make sure the entry date you enter is digits and includes year-mm-dd(example: 20
 				value = True
 
 
-
 	def pulling_entry_minutes(self):
+		"""allows user to retrieve specific entry from csv file based on time spent user inputs at command line"""
 
 		with open('time_sheets.csv') as file_object:
 			csvreader = csv.reader(file_object)
@@ -143,8 +147,9 @@ are only using digits and searching in terms of minutes the task took\n""".forma
 				clear()
 				value = True
 
+	
 	def pulling_entry_task(self):
-		'''gives user entry associated with exact task name or associated notes'''
+		"""gives user entry associated with exact task name or associated notes"""
 
 		with open('time_sheets.csv') as file_object:
 			csvreader = csv.reader(file_object)
@@ -176,6 +181,7 @@ please check your spelling and try again\n""".format(self.search_choice))
 				self.search_choice = input("Enter the exact name for the task name or additional notes you are searching\n\n>")
 				value = True
 
+	
 	def pulling_entry_regex(self):
 		"""loops through csv file to find matching regular expressions entered by user"""
 		newlist = []
@@ -201,6 +207,7 @@ please check your spelling and try again\n""".format(self.search_choice))
 
 
 def main_menu(): 
+	"""main menu at command line"""
 
 	def menu():
 		"""Menu options for user to add new entry, search entry log or quit"""
@@ -230,7 +237,7 @@ def main_menu():
 
 
 	def listed_dates():
-		'''gives user list of dates associated with entries in csv file'''
+		"""gives user list of dates associated with entries in csv file"""
 		lis = []
 		with open('time_sheets.csv') as file_object:
 			csvreader = csv.reader(file_object)

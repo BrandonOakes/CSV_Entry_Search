@@ -312,7 +312,7 @@ def main_menu():
 			print('\nListed above are entries matching the minute total you entered: \n\n\n')
 		elif searching_option == '4':
 			#give list of entries matching regax user supplied
-			search_choice = input('Enter the regular expression you would like to use for your search pattern:\n>')
+			search_choice = input('Enter the regular expression you would like to use for your search pattern(ex. \w+\d+)\n>')
 			entry_request = SearchEntry(search_choice)
 			entry_request.pulling_entry_regex()
 		space()

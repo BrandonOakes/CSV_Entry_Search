@@ -2,7 +2,7 @@
 import csv
 import datetime
 import re
-import sys
+import sys, pdb
 
 from additional_functions import space, clear, reading_csv, display_entries
 
@@ -140,7 +140,6 @@ def search_decision(searching_option):
 		for entry in newlist:
 			print(entry)
 		space()
-		clear()
 		entry_request = SearchEntry()
 		entry_request.pulling_entry_date()
 		print('\nEntries from the date you selected are shown above:\n\n\n')
@@ -247,24 +246,31 @@ are only using digits and searching in terms of minutes the task took\n""".forma
 	
 	def pulling_entry_regex(self):
 		"""loops through csv file to find matching regular expressions entered by user"""
+		value = 0
+		while value < 1:
+			self.search_choice = input('Enter the regular expression you would like to use for your search pattern(ex. \w+\d+)\n>')
+			newlist = []
+			regax_pattern = re.compile(self.search_choice)
+			with open('time_sheets.csv') as file_object:
+				csvreader = csv.reader(file_object)
+				for entry in csvreader:
+					if entry in newlist:
+						continue
+					else:
+						for let in entry:
+							if let in regax_pattern.findall(let):
+								if entry in newlist:
+									continue
+								else:
+									newlist.append(entry)
+			if len(newlist) >= 1:
+				for entry in newlist:
+					display_entries(entry)
+				value = 1
+			else:
+				clear()
+				print("Sorry {} was not found as a match or regular expression, please try again".format(self.search_choice))
 
-		self.search_choice = input('Enter the regular expression you would like to use for your search pattern(ex. \w+\d+)\n>')
-		newlist = []
-		regax_pattern = re.compile(self.search_choice, re.IGNORCASE)
-		with open('time_sheets.csv') as file_object:
-			csvreader = csv.reader(file_object)
-			for entry in csvreader:
-				if entry in newlist:
-					continue
-				else:
-					for let in entry:
-						if let in regax_pattern.findall(let):
-							if entry in newlist:
-								continue
-							else:
-								newlist.append(entry)
-		for entry in newlist:
-			display_entries(entry)
 
 
 def main_menu(): 

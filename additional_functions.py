@@ -36,3 +36,4 @@ def display_entries(entry):
     print('Additional notes: ' + entry[2])
     print('Entry date: ' + entry[3])
     print('____'*15)
+    

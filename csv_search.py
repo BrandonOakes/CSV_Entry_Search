@@ -244,6 +244,7 @@ are only using digits and searching in terms of minutes the task took\n""".forma
 			value = True
 
 	
+
 	def pulling_entry_regex(self):
 		"""loops through csv file to find matching regular expressions entered by user"""
 		value = 0
@@ -254,15 +255,26 @@ are only using digits and searching in terms of minutes the task took\n""".forma
 			with open('time_sheets.csv') as file_object:
 				csvreader = csv.reader(file_object)
 				for entry in csvreader:
+					# print("Entry: ", entry)
 					if entry in newlist:
 						continue
 					else:
 						for let in entry:
-							if let in regax_pattern.findall(let):
-								if entry in newlist:
-									continue
-								else:
-									newlist.append(entry)
+							# print("let: ", let)
+							# print("regax pattern is: ", regax_pattern)
+							if self.search_choice.isalpha():
+								regax_pattern = re.compile(r'.*{}.*'.format(self.search_choice), re.IGNORECASE)
+								if let in regax_pattern.findall(let):
+									if entry in newlist:
+										continue
+									else:
+										newlist.append(entry)
+							else:
+								if let in regax_pattern.findall(let):
+									if entry in newlist:
+										continue
+									else:
+										newlist.append(entry)
 			if len(newlist) >= 1:
 				for entry in newlist:
 					display_entries(entry)

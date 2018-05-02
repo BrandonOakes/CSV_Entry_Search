@@ -52,6 +52,7 @@ class NewEntry():
         self.notes = notes
 
     def task_name(self):
+        """Allows user to add task name to entry"""
         self.task = input('''Enter the task name you would like to log below.
 \n>''').title()
         clear()
@@ -77,12 +78,14 @@ digits only. (ex. correct response -> 45 | incorrect response ->forty-five)
 \n\n\n""".format(self.time))
 
     def task_notes(self):
+        """Allows user to add additional notes to entry"""
         self.notes = input('''Do you have any additional notes to add about your task?
 (if not type -> none):\n>''').title()
         clear()
 
 
 def new_entry_made():
+    """creates new entry instance and displays it to user"""
     date = datetime.date.today()
     new_entry = NewEntry()
     new_entry.task_name()
@@ -126,6 +129,7 @@ please select 1, 2, 3, or 4.'''.format(searching_option))
 
 
 def search_decision(searching_option):
+    """runs requested search option by user"""
     if searching_option == '1':
         #give list of all possible dates to choose from
         """gives user list of dates associated with entries in csv file"""
@@ -207,6 +211,7 @@ make sure the entry date you enter is digits and includes year-mm-dd
             value = True
 
     def pulling_entry_task(self):
+        """Allows user to search entries by task name or notes"""
 
         self.search_choice = input("""Enter the exact name for the entry you are searching
 \n>""").title()

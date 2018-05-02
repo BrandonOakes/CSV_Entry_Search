@@ -3,7 +3,7 @@
 import csv
 import datetime
 import re
-import sys, pdb
+import sys
 
 from additional_functions import space, clear, reading_csv, display_entries
 

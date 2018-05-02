@@ -16,20 +16,26 @@ def menu():
 2) Search entry\n
 3) Quit\n
 >''' )
-		if answer in ['1', '3']:
-			return answer
-			break
-		elif answer == '2' and len(reading_csv())>=1:
-			return answer
-			break
-		elif answer == '2' and len(reading_csv()) < 1:
+		try:
+			if answer in ['1', '3']:
+				return answer
+				break
+			elif answer == '2' and len(reading_csv())>=1:
+				return answer
+				break
+			elif answer == '2' and len(reading_csv()) < 1:
+				clear()
+				print('''There are no entries to search, at the main menu press 1 to enter a new entry ''')
+				space()
+			else:
+				clear()
+				print('\nSORRY {} IS NOT A VALID SELECTION, please select 1, 2, or 3.'.format(answer))
+				space()
+
+		except FileNotFoundError:
 			clear()
 			print('''There are no entries to search, at the main menu press 1 to enter a new entry ''')
-			space()
-		else:
-			clear()
-			print('\nSORRY {} IS NOT A VALID SELECTION, please select 1, 2, or 3.'.format(answer))
-			space()
+
 
 
 class NewEntry():

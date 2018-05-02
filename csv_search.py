@@ -89,7 +89,7 @@ def new_entry_made():
     new_entry.task_time()
     new_entry.task_notes()
     entry_info = [new_entry.task, new_entry.time, new_entry.notes, date]
-    with open('time_sheets.csv', 'a') as file_object:
+    with open('time_sheets.csv', 'a', newline = '') as file_object:
         csvwriter = csv.writer(file_object, delimiter=',')
         csvwriter.writerow(entry_info)
     print('\nTask name: ' + new_entry.task.title() + '.\n')

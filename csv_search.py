@@ -168,6 +168,8 @@ def search_decision(searching_option):
         #give list of entries matching regax user supplied
         entry_request = SearchEntry()
         entry_request.pulling_entry_regex()
+    input("Press enter to continue:")
+    clear()
     space()
     print('\t\t\tMAIN MENU\n')
 
